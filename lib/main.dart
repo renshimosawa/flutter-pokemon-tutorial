@@ -1,6 +1,9 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'poke_detail.dart';
 import 'poke_list_item.dart';
+import './ThemeModeSelectionPage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -72,8 +75,34 @@ class Settings extends StatelessWidget {
   const Settings({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return ListView(children: const [
-      ListTile(leading: Icon(Icons.lightbulb), title: Text('Dark/Light Mode'))
-    ]);
+    return ListView(
+      children: [
+        ListTile(
+          leading: const Icon(Icons.lightbulb),
+          title: const Text('Dark/Light Mode'),
+          onTap: () => {
+            Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => const ThemeModeSelectionPage(),
+            )),
+          },
+        ),
+        SwitchListTile(
+          title: const Text('Switch'),
+          value: true,
+          onChanged: (yes) => {},
+        ),
+        CheckboxListTile(
+          title: const Text('Checkbox'),
+          value: true,
+          onChanged: (yes) => {},
+        ),
+        RadioListTile(
+          title: const Text('Radio'),
+          value: true,
+          groupValue: true,
+          onChanged: (yes) => {},
+        ),
+      ],
+    );
   }
 }
